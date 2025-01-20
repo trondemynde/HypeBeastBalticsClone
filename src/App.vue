@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="app-container">
+    <MyHeader />
+      <div id="app">
+        <router-view />
+      </div>
+    <MyFooter class="margin-top auto"/>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import MyHeader from './components/MyHeader.vue';
+import MyFooter from './components/MyFooter.vue';
 export default {
+  components: { MyHeader, MyFooter },
   name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+};
 </script>
 
-<style>
+<style lang="scss" scoped>
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensure the body takes up the full viewport height */
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  flex-grow: 1; /* This makes the content section expand to fill available space */
+}
+.footer {
+  margin-top: auto; /* Push the footer to the bottom */
 }
 </style>
